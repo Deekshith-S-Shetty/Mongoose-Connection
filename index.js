@@ -2,12 +2,14 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 const restaurants = require("./api/restaurants.route");
+const mongoose = require("mongoose");
 
 // Configure dotenv files.
 const dotenv = require("dotenv");
 dotenv.config();
 
 const PORT = process.env.PORT || 5000;
+const URI = process.env.URI;
 
 // Cors help in connection (by skipping origin policy).
 app.use(cors());
@@ -17,6 +19,7 @@ app.use(express.json());
 
 // Listen on localhost:5000.
 app.listen(5000, () => {
+  mongoose.connect(URI);
   console.log(`Listening on port ${PORT}`);
 });
 
