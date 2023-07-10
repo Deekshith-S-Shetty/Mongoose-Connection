@@ -1,9 +1,8 @@
 const express = require("express");
+const getRestaurants = require("../api/routes/getRestaurants");
 
 const router = express.Router();
 
-router.route("/").get((req, res) => {
-  res.send("<h1> Hello! </h1>");
-});
+router.route("/").get(getRestaurants);
 
 module.exports = router;
